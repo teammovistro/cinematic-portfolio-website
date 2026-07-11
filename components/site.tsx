@@ -5,6 +5,7 @@ import { LoadingScreen } from './loading-screen'
 import { Cursor } from './anim/cursor'
 import { WorldStage } from './world/world-stage'
 import { Chrome } from './world/chrome'
+import { MobileUI } from './world/mobile-ui'
 
 export function Site() {
   const [loaded, setLoaded] = useState(false)
@@ -14,9 +15,16 @@ export function Site() {
       <LoadingScreen onDone={() => setLoaded(true)} />
       <Cursor />
 
-      {/* the entire site is one continuous 3D world */}
-      <WorldStage />
-      <Chrome />
+      {/* PC UI - Exact original desktop 3D museum corridor */}
+      <div className="hidden md:block">
+        <WorldStage />
+        <Chrome />
+      </div>
+
+      {/* Mobile UI - Brand new dedicated interactive 3D mobile showcase */}
+      <div className="block md:hidden">
+        <MobileUI />
+      </div>
 
       {/* cinematic overlays */}
       <div className="vignette" aria-hidden="true" />

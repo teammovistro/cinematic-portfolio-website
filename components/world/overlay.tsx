@@ -6,26 +6,19 @@ import { useLiveProjects } from './data'
 function Panel({
   children,
   align = 'center',
-  isCard = false,
 }: {
   children: React.ReactNode
   align?: 'left' | 'right' | 'center'
-  isCard?: boolean
 }) {
-  const justifyDesktop =
+  const justify =
     align === 'left'
-      ? 'md:items-start md:text-left'
+      ? 'items-start text-left'
       : align === 'right'
-        ? 'md:items-end md:text-right'
-        : 'md:items-center md:text-center'
-
-  const mobileAlign = isCard
-    ? 'justify-end pb-20 items-center text-center'
-    : 'justify-center items-center text-center'
-
+        ? 'items-end text-right'
+        : 'items-center text-center'
   return (
     <section
-      className={`flex h-screen w-screen flex-col gap-3 sm:gap-4 px-5 sm:px-10 md:px-20 ${mobileAlign} md:justify-center ${justifyDesktop}`}
+      className={`flex h-screen w-screen flex-col justify-center gap-4 px-8 md:px-20 ${justify}`}
     >
       {children}
     </section>
@@ -56,67 +49,63 @@ export function Overlay() {
       {/* intro — fades out on scroll */}
       <section
         style={{ opacity: introOpacity }}
-        className="pointer-events-none flex h-screen w-screen flex-col items-center justify-between py-16 transition-opacity md:py-20 px-4"
+        className="pointer-events-none flex h-screen w-screen flex-col items-center justify-between py-16 transition-opacity md:py-20"
       >
-        <span className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.5em] text-[color:var(--muted-foreground)] text-center">
+        <span className="font-mono text-xs uppercase tracking-[0.5em] text-[color:var(--muted-foreground)]">
           Cinematography · Photography · Management · Marketing
         </span>
-        <div className="flex flex-col items-center gap-3 rounded-2xl border border-[color:var(--gold)]/25 bg-black/65 md:bg-transparent md:border-none p-4 sm:p-5 md:p-0 backdrop-blur-xl md:backdrop-blur-none max-w-xs sm:max-w-md">
-          <p className="text-pretty text-center font-mono text-xs sm:text-sm leading-relaxed text-[color:var(--muted-foreground)]">
+        <div className="flex flex-col items-center gap-4">
+          <p className="max-w-md text-pretty text-center font-mono text-sm leading-relaxed text-[color:var(--muted-foreground)]">
             A premier studio crafting cinematography, photography, management & marketing from Faridpur, Bangladesh to the world.
           </p>
-          <span className="font-mono text-[0.65rem] sm:text-[0.7rem] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[color:var(--gold)]">
-            ✦ Scroll / Swipe to enter ↓
+          <span className="font-mono text-[0.7rem] uppercase tracking-[0.4em] text-[color:var(--gold)]">
+            Scroll to enter ↓
           </span>
         </div>
       </section>
 
-      {/* one caption panel per artwork, placed opposite the frame on desktop, bottom floating glass card on mobile */}
+      {/* one caption panel per artwork, placed opposite the frame */}
       {projects.map((p, i) => (
-        <Panel key={p.id || p.title} align={i % 2 === 0 ? 'right' : 'left'} isCard={true}>
-          <div className="rounded-2xl border border-[color:var(--gold)]/40 bg-black/85 md:bg-transparent md:border-none p-5 sm:p-6 md:p-0 shadow-[0_15px_50px_rgba(0,0,0,0.95)] md:shadow-none backdrop-blur-2xl md:backdrop-blur-none max-w-xs sm:max-w-sm md:max-w-md transition-all">
-            <span className="inline-block font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.4em] text-[color:var(--gold)]">
-              ✦ {p.category} · {p.year}
-            </span>
-            <h2 className="mt-1.5 font-display text-2xl sm:text-4xl uppercase leading-none tracking-tight text-[color:var(--foreground)] md:text-7xl">
-              {p.title}
-            </h2>
-            <p className="mt-2.5 text-pretty text-xs sm:text-sm leading-relaxed text-[color:var(--muted-foreground)]">
-              {p.description || DESCRIPTIONS[i] || 'Cinematic exploration.'}
-            </p>
-          </div>
+        <Panel key={p.id || p.title} align={i % 2 === 0 ? 'right' : 'left'}>
+          <span className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--gold)]">
+            {p.category} · {p.year}
+          </span>
+          <h2 className="font-display text-5xl uppercase leading-none tracking-tight text-[color:var(--foreground)] md:text-7xl">
+            {p.title}
+          </h2>
+          <p className="max-w-xs text-pretty text-sm leading-relaxed text-[color:var(--muted-foreground)]">
+            {p.description || DESCRIPTIONS[i] || 'Cinematic exploration.'}
+          </p>
         </Panel>
       ))}
 
       {/* contact */}
       <Panel>
-        <div className="rounded-3xl border border-[color:var(--gold)]/40 bg-black/85 md:bg-transparent md:border-none p-6 sm:p-8 md:p-0 shadow-[0_20px_60px_rgba(0,0,0,0.95)] md:shadow-none backdrop-blur-2xl md:backdrop-blur-none max-w-sm md:max-w-xl transition-all flex flex-col items-center">
-          <span className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.5em] text-[color:var(--gold)]">
-            Start a project
-          </span>
-          <h2 className="mt-2 text-balance font-display text-3xl sm:text-4xl uppercase leading-tight tracking-tight text-[color:var(--foreground)] md:text-6xl">
-            Ready when you are
-          </h2>
-          <div className="mt-5 sm:mt-6 flex flex-col items-center justify-center w-full">
-            <a
-              href="/booking"
-              data-cursor="hover"
-              className="pointer-events-auto inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-[color:var(--gold)] px-8 py-4 sm:px-10 sm:py-5 font-mono text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.25em] text-background shadow-[0_0_35px_rgba(212,166,79,0.6)] transition-all hover:bg-foreground hover:text-background hover:scale-105 font-bold"
-            >
-              ✦ Book Now
-            </a>
-          </div>
-          <span className="mt-6 sm:mt-8 font-mono text-[0.65rem] sm:text-[0.7rem] uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[color:var(--muted-foreground)] text-center">
-            Faridpur, Bangladesh — Worldwide
-          </span>
+        <span className="font-mono text-xs uppercase tracking-[0.5em] text-[color:var(--gold)]">
+          Start a project
+        </span>
+        <h2 className="text-balance font-display text-4xl uppercase leading-tight tracking-tight text-[color:var(--foreground)] md:text-6xl">
+          Ready when you are
+        </h2>
+        <div className="mt-6 flex flex-col items-center justify-center">
           <a
-            href="/partners"
+            href="/booking"
             data-cursor="hover"
-            className="pointer-events-auto mt-2.5 sm:mt-3 text-center font-mono text-[0.58rem] sm:text-[0.65rem] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[color:var(--gold)]/80 hover:text-[color:var(--gold)] transition-colors"
+            className="pointer-events-auto inline-flex items-center justify-center rounded-sm bg-[color:var(--gold)] px-10 py-5 font-mono text-sm uppercase tracking-[0.25em] text-background shadow-[0_0_35px_rgba(212,166,79,0.5)] transition-all hover:bg-foreground hover:text-background hover:scale-105 font-bold"
           >
-            Official IT Partner & Website Architect: Micro Logic IT
+            ✦ Book Now
           </a>
         </div>
+        <span className="mt-8 font-mono text-[0.7rem] uppercase tracking-[0.35em] text-[color:var(--muted-foreground)]">
+          Faridpur, Bangladesh — Worldwide
+        </span>
+        <a
+          href="/partners"
+          data-cursor="hover"
+          className="pointer-events-auto mt-3 font-mono text-[0.65rem] uppercase tracking-[0.3em] text-[color:var(--gold)]/80 hover:text-[color:var(--gold)] transition-colors"
+        >
+          Official IT Partner & Website Architect: Micro Logic IT
+        </a>
       </Panel>
     </div>
   )
