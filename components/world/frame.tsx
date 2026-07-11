@@ -13,10 +13,11 @@ export function Frame({ project, index }: { project: Project; index: number }) {
   const { viewport } = useThree()
   const isMobile = viewport.width < 6
 
-  const x = isMobile ? (index % 2 === 0 ? -1.75 : 1.75) : frameX(index)
+  const x = isMobile ? 0 : frameX(index)
+  const y = isMobile ? 0.55 : 0
   const z = frameZ(index)
-  const rotY = isMobile ? (index % 2 === 0 ? 0.22 : -0.22) : frameRotY(index)
-  const scale = isMobile ? 0.74 : 1
+  const rotY = isMobile ? 0 : frameRotY(index)
+  const scale = isMobile ? 0.84 : 1
 
   const imgRef = useRef<THREE.Mesh>(null)
   const lightRef = useRef<THREE.PointLight>(null)
@@ -36,7 +37,7 @@ export function Frame({ project, index }: { project: Project; index: number }) {
   })
 
   return (
-    <group position={[x, 0, z]} rotation={[0, rotY, 0]} scale={scale}>
+    <group position={[x, y, z]} rotation={[0, rotY, 0]} scale={scale}>
       {/* warm key light pooling on the artwork + floor */}
       <pointLight
         ref={lightRef}
