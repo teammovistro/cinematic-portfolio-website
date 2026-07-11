@@ -9,7 +9,8 @@ import { useLiveProjects, CAM_START_Z, getCamEndZ, frameZ } from './data'
 
 export function Gallery() {
   const scroll = useScroll()
-  const { camera } = useThree()
+  const { camera, viewport } = useThree()
+  const isMobile = viewport.width < 5.5
   const target = useRef(new THREE.Vector3())
   const projects = useLiveProjects()
   const camEndZ = getCamEndZ(projects.length)
@@ -24,13 +25,13 @@ export function Gallery() {
     // subtle mouse parallax
     camera.position.x = THREE.MathUtils.damp(
       camera.position.x,
-      state.pointer.x * 0.5,
+      state.pointer.x * (isMobile ? 0.2 : 0.5),
       3,
       delta,
     )
     camera.position.y = THREE.MathUtils.damp(
       camera.position.y,
-      0.2 + state.pointer.y * 0.35,
+      0.2 + state.pointer.y * (isMobile ? 0.15 : 0.35),
       3,
       delta,
     )
@@ -45,7 +46,7 @@ export function Gallery() {
       <Float speed={1.2} rotationIntensity={0.15} floatIntensity={0.4}>
         <Text
           font="/fonts/Archivo-Bold.ttf"
-          fontSize={1.35}
+          fontSize={isMobile ? 0.78 : 1.35}
           position={[0, 1.1, 2]}
           anchorX="center"
           anchorY="middle"
@@ -56,12 +57,12 @@ export function Gallery() {
         </Text>
         <Text
           font="/fonts/SpaceMono-Regular.ttf"
-          fontSize={0.2}
+          fontSize={isMobile ? 0.11 : 0.2}
           position={[0, 0.1, 2]}
           anchorX="center"
           anchorY="middle"
           color="#d4a64f"
-          letterSpacing={0.4}
+          letterSpacing={isMobile ? 0.18 : 0.4}
         >
           CINEMA · PHOTO · MANAGEMENT
         </Text>

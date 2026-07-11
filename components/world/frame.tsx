@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import { Image, Text } from '@react-three/drei'
 import * as THREE from 'three'
 import { frameRotY, frameX, frameZ, type Project } from './data'
@@ -10,9 +10,13 @@ const W = 4.2
 const H = 2.4
 
 export function Frame({ project, index }: { project: Project; index: number }) {
-  const x = frameX(index)
+  const { viewport } = useThree()
+  const isMobile = viewport.width < 5.5
+
+  const x = isMobile ? (index % 2 === 0 ? -1.1 : 1.1) : frameX(index)
   const z = frameZ(index)
-  const rotY = frameRotY(index)
+  const rotY = isMobile ? (index % 2 === 0 ? 0.22 : -0.22) : frameRotY(index)
+  const scale = isMobile ? 0.62 : 1
 
   const imgRef = useRef<THREE.Mesh>(null)
   const lightRef = useRef<THREE.PointLight>(null)
@@ -32,7 +36,7 @@ export function Frame({ project, index }: { project: Project; index: number }) {
   })
 
   return (
-    <group position={[x, 0, z]} rotation={[0, rotY, 0]}>
+    <group position={[x, 0, z]} rotation={[0, rotY, 0]} scale={scale}>
       {/* warm key light pooling on the artwork + floor */}
       <pointLight
         ref={lightRef}
