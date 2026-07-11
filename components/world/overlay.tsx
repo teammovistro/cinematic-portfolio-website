@@ -10,15 +10,15 @@ function Panel({
   children: React.ReactNode
   align?: 'left' | 'right' | 'center'
 }) {
-  const justify =
+  const justifyDesktop =
     align === 'left'
-      ? 'items-start text-left'
+      ? 'md:items-start md:text-left'
       : align === 'right'
-        ? 'items-end text-right'
-        : 'items-center text-center'
+        ? 'md:items-end md:text-right'
+        : 'md:items-center md:text-center'
   return (
     <section
-      className={`flex h-screen w-screen flex-col justify-center gap-3 sm:gap-4 px-6 sm:px-12 md:px-20 ${justify}`}
+      className={`flex h-screen w-screen flex-col justify-end pb-24 sm:pb-0 sm:justify-center items-center text-center gap-2 sm:gap-4 px-6 sm:px-12 md:px-20 ${justifyDesktop}`}
     >
       {children}
     </section>
@@ -64,16 +64,16 @@ export function Overlay() {
         </div>
       </section>
 
-      {/* one caption panel per artwork, placed opposite the frame */}
+      {/* one caption panel per artwork, placed opposite the frame on desktop, bottom centered on mobile */}
       {projects.map((p, i) => (
         <Panel key={p.id || p.title} align={i % 2 === 0 ? 'right' : 'left'}>
-          <span className="font-mono text-[0.68rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[color:var(--gold)]">
+          <span className="font-mono text-[0.62rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.4em] text-[color:var(--gold)]">
             {p.category} · {p.year}
           </span>
-          <h2 className="font-display text-3xl sm:text-5xl uppercase leading-none tracking-tight text-[color:var(--foreground)] md:text-7xl">
+          <h2 className="font-display text-xl sm:text-5xl uppercase leading-none tracking-tight text-[color:var(--foreground)] md:text-7xl">
             {p.title}
           </h2>
-          <p className="max-w-[220px] sm:max-w-xs text-pretty text-xs sm:text-sm leading-relaxed text-[color:var(--muted-foreground)]">
+          <p className="max-w-[260px] sm:max-w-xs text-pretty text-[0.72rem] sm:text-sm leading-relaxed text-[color:var(--muted-foreground)]">
             {p.description || DESCRIPTIONS[i] || 'Cinematic exploration.'}
           </p>
         </Panel>
@@ -81,28 +81,28 @@ export function Overlay() {
 
       {/* contact */}
       <Panel>
-        <span className="font-mono text-xs uppercase tracking-[0.5em] text-[color:var(--gold)]">
+        <span className="font-mono text-[0.62rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.5em] text-[color:var(--gold)]">
           Start a project
         </span>
-        <h2 className="text-balance font-display text-4xl uppercase leading-tight tracking-tight text-[color:var(--foreground)] md:text-6xl">
+        <h2 className="text-balance font-display text-2xl sm:text-4xl uppercase leading-tight tracking-tight text-[color:var(--foreground)] md:text-6xl">
           Ready when you are
         </h2>
-        <div className="mt-6 flex flex-col items-center justify-center">
+        <div className="mt-4 sm:mt-6 flex flex-col items-center justify-center">
           <a
             href="/booking"
             data-cursor="hover"
-            className="pointer-events-auto inline-flex items-center justify-center rounded-sm bg-[color:var(--gold)] px-10 py-5 font-mono text-sm uppercase tracking-[0.25em] text-background shadow-[0_0_35px_rgba(212,166,79,0.5)] transition-all hover:bg-foreground hover:text-background hover:scale-105 font-bold"
+            className="pointer-events-auto inline-flex items-center justify-center rounded-sm bg-[color:var(--gold)] px-7 py-3.5 sm:px-10 sm:py-5 font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-background shadow-[0_0_35px_rgba(212,166,79,0.5)] transition-all hover:bg-foreground hover:text-background hover:scale-105 font-bold"
           >
             ✦ Book Now
           </a>
         </div>
-        <span className="mt-8 font-mono text-[0.7rem] uppercase tracking-[0.35em] text-[color:var(--muted-foreground)]">
+        <span className="mt-5 sm:mt-8 font-mono text-[0.65rem] sm:text-[0.7rem] uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[color:var(--muted-foreground)]">
           Faridpur, Bangladesh — Worldwide
         </span>
         <a
           href="/partners"
           data-cursor="hover"
-          className="pointer-events-auto mt-3 font-mono text-[0.65rem] uppercase tracking-[0.3em] text-[color:var(--gold)]/80 hover:text-[color:var(--gold)] transition-colors"
+          className="pointer-events-auto mt-2 sm:mt-3 font-mono text-[0.58rem] sm:text-[0.65rem] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[color:var(--gold)]/80 hover:text-[color:var(--gold)] transition-colors"
         >
           Official IT Partner & Website Architect: Micro Logic IT
         </a>

@@ -19,10 +19,11 @@ export function Frame({ project, index }: { project: Project; index: number }) {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  const x = isMobile ? (index % 2 === 0 ? -0.88 : 0.88) : frameX(index)
+  // On mobile, center the photo (x = 0, rotY = 0) and scale proportionally so 100% of the image is fully visible
+  const x = isMobile ? 0 : frameX(index)
   const z = frameZ(index)
-  const rotY = isMobile ? (index % 2 === 0 ? 0.22 : -0.22) : frameRotY(index)
-  const scale = isMobile ? 0.53 : 1
+  const rotY = isMobile ? 0 : frameRotY(index)
+  const scale = isMobile ? 0.44 : 1
 
   const imgRef = useRef<THREE.Mesh>(null)
   const lightRef = useRef<THREE.PointLight>(null)
