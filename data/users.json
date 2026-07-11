@@ -1,0 +1,22 @@
+[
+  {
+    "id": "user-admin",
+    "username": "admin",
+    "password": "movistro",
+    "name": "Movistro Executive",
+    "role": "super_admin",
+    "email": "admin@movistro.com",
+    "createdAt": "2026-07-08T01:26:04.339Z",
+    "active": true
+  },
+  {
+    "id": "user-1783473964414",
+    "username": "editor",
+    "password": "movistro",
+    "name": "Cinematic Director",
+    "role": "editor",
+    "email": "director@movistro.com",
+    "createdAt": "2026-07-08T01:26:04.414Z",
+    "active": true
+  }
+]

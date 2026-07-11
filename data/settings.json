@@ -1,0 +1,16 @@
+{
+  "name": "MOVISTRO",
+  "tagline": "Cinematography · Photography · Management · Marketing",
+  "foundedYear": "2024",
+  "email": "hello@movistro.com",
+  "phone": "+880 1700-000000",
+  "location": "Faridpur, Bangladesh — Worldwide",
+  "aboutText": "A global production studio providing premier Cinematography, Photography, Talent Management, and Strategic Film Marketing.",
+  "enableVignette": true,
+  "enableFilmGrain": true,
+  "socials": {
+    "instagram": "https://instagram.com/movistro",
+    "vimeo": "https://vimeo.com/movistro",
+    "youtube": "https://youtube.com/@movistro"
+  }
+}

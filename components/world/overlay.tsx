@@ -1,0 +1,123 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+import { useLiveProjects } from './data'
+
+function Panel({
+  children,
+  align = 'center',
+}: {
+  children: React.ReactNode
+  align?: 'left' | 'right' | 'center'
+}) {
+  const justify =
+    align === 'left'
+      ? 'items-start text-left'
+      : align === 'right'
+        ? 'items-end text-right'
+        : 'items-center text-center'
+  return (
+    <section
+      className={`flex h-screen w-screen flex-col justify-center gap-4 px-8 md:px-20 ${justify}`}
+    >
+      {children}
+    </section>
+  )
+}
+
+export function Overlay() {
+  const [introOpacity, setIntroOpacity] = useState(1)
+  const projects = useLiveProjects()
+
+  useEffect(() => {
+    const handleWheel = (e: Event) => {
+      const scrollContainer = document.querySelector('[data-scroll]')
+      if (scrollContainer) {
+        const scrollY = (scrollContainer as HTMLElement).scrollTop || 0
+        setIntroOpacity(Math.max(0, 1 - scrollY / 300))
+      }
+    }
+
+    const scrollContainer =
+      document.querySelector('[data-scroll]') || window
+    scrollContainer.addEventListener('wheel', handleWheel)
+    return () => scrollContainer.removeEventListener('wheel', handleWheel)
+  }, [])
+
+  return (
+    <div className="w-screen">
+      {/* intro — fades out on scroll */}
+      <section
+        style={{ opacity: introOpacity }}
+        className="pointer-events-none flex h-screen w-screen flex-col items-center justify-between py-16 transition-opacity md:py-20"
+      >
+        <span className="font-mono text-xs uppercase tracking-[0.5em] text-[color:var(--muted-foreground)]">
+          Cinematography · Photography · Management · Marketing
+        </span>
+        <div className="flex flex-col items-center gap-4">
+          <p className="max-w-md text-pretty text-center font-mono text-sm leading-relaxed text-[color:var(--muted-foreground)]">
+            A premier studio crafting cinematography, photography, management & marketing from Faridpur, Bangladesh to the world.
+          </p>
+          <span className="font-mono text-[0.7rem] uppercase tracking-[0.4em] text-[color:var(--gold)]">
+            Scroll to enter ↓
+          </span>
+        </div>
+      </section>
+
+      {/* one caption panel per artwork, placed opposite the frame */}
+      {projects.map((p, i) => (
+        <Panel key={p.id || p.title} align={i % 2 === 0 ? 'right' : 'left'}>
+          <span className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--gold)]">
+            {p.category} · {p.year}
+          </span>
+          <h2 className="font-display text-5xl uppercase leading-none tracking-tight text-[color:var(--foreground)] md:text-7xl">
+            {p.title}
+          </h2>
+          <p className="max-w-xs text-pretty text-sm leading-relaxed text-[color:var(--muted-foreground)]">
+            {p.description || DESCRIPTIONS[i] || 'Cinematic exploration.'}
+          </p>
+        </Panel>
+      ))}
+
+      {/* contact */}
+      <Panel>
+        <span className="font-mono text-xs uppercase tracking-[0.5em] text-[color:var(--gold)]">
+          Start a project
+        </span>
+        <h2 className="text-balance font-display text-4xl uppercase leading-tight tracking-tight text-[color:var(--foreground)] md:text-6xl">
+          Ready when you are
+        </h2>
+        <div className="mt-6 flex flex-col items-center justify-center">
+          <a
+            href="/booking"
+            data-cursor="hover"
+            className="pointer-events-auto inline-flex items-center justify-center rounded-sm bg-[color:var(--gold)] px-10 py-5 font-mono text-sm uppercase tracking-[0.25em] text-background shadow-[0_0_35px_rgba(212,166,79,0.5)] transition-all hover:bg-foreground hover:text-background hover:scale-105 font-bold"
+          >
+            ✦ Book Now
+          </a>
+        </div>
+        <span className="mt-8 font-mono text-[0.7rem] uppercase tracking-[0.35em] text-[color:var(--muted-foreground)]">
+          Faridpur, Bangladesh — Worldwide
+        </span>
+        <a
+          href="/partners"
+          data-cursor="hover"
+          className="pointer-events-auto mt-3 font-mono text-[0.65rem] uppercase tracking-[0.3em] text-[color:var(--gold)]/80 hover:text-[color:var(--gold)] transition-colors"
+        >
+          Official IT Partner & Website Architect: Micro Logic IT
+        </a>
+      </Panel>
+    </div>
+  )
+}
+
+const DESCRIPTIONS = [
+  'A nocturnal short shot on anamorphic glass, chasing light through empty streets.',
+  'High-velocity automotive spot graded in teal and amber neon.',
+  'A fashion film built on negative space, natural light, and slow motion.',
+  'An intimate documentary captured at sea through fog and first light.',
+  'A high-energy music video lit with bold, saturated stage color.',
+  'Sweeping aerial cinematography across mountain roads at golden hour.',
+  'Behind the scenes — the craft, the crew, and the camera in motion.',
+  'An editorial portrait series exploring texture and single-source light.',
+]

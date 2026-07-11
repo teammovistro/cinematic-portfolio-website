@@ -1,0 +1,20 @@
+{
+  "botToken": "123456789:TEST_BOT_TOKEN_DEMO",
+  "enabled": true,
+  "recipients": [
+    {
+      "id": "rec-1",
+      "name": "Executive Producer",
+      "role": "Super Admin",
+      "chatId": "111222333",
+      "enabled": true
+    },
+    {
+      "id": "rec-2",
+      "name": "Denis Villeneuve",
+      "role": "Producer / Editor",
+      "chatId": "444555666",
+      "enabled": true
+    }
+  ]
+}

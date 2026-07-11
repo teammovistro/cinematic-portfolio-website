@@ -1,0 +1,92 @@
+[
+  {
+    "id": "proj-1783472986710",
+    "title": "Dune Horizons",
+    "category": "Feature Film",
+    "year": "2026",
+    "img": "/images/reel.png",
+    "description": "An epic science fiction feature shot in IMAX 70mm across desert landscapes.",
+    "active": true,
+    "featured": true
+  },
+  {
+    "id": "proj-1",
+    "title": "Nocturne",
+    "category": "Short Film",
+    "year": "2025",
+    "img": "/images/reel.png",
+    "description": "A nocturnal short shot on anamorphic glass, chasing light through empty streets.",
+    "active": true,
+    "featured": true
+  },
+  {
+    "id": "proj-2",
+    "title": "Velocity",
+    "category": "Automotive",
+    "year": "2025",
+    "img": "/images/project-1.png",
+    "description": "High-velocity automotive spot graded in teal and amber neon.",
+    "active": true,
+    "featured": true
+  },
+  {
+    "id": "proj-3",
+    "title": "Silk",
+    "category": "Fashion Film",
+    "year": "2024",
+    "img": "/images/project-2.png",
+    "description": "A fashion film built on negative space, natural light, and slow motion.",
+    "active": true,
+    "featured": true
+  },
+  {
+    "id": "proj-4",
+    "title": "Tides",
+    "category": "Documentary",
+    "year": "2024",
+    "img": "/images/project-3.png",
+    "description": "An intimate documentary captured at sea through fog and first light.",
+    "active": true,
+    "featured": true
+  },
+  {
+    "id": "proj-5",
+    "title": "Pulse",
+    "category": "Music Video",
+    "year": "2024",
+    "img": "/images/project-4.png",
+    "description": "A high-energy music video lit with bold, saturated stage color.",
+    "active": true,
+    "featured": true
+  },
+  {
+    "id": "proj-6",
+    "title": "Horizon",
+    "category": "Aerial",
+    "year": "2023",
+    "img": "/images/reel-2.png",
+    "description": "Sweeping aerial cinematography across mountain roads at golden hour.",
+    "active": true,
+    "featured": true
+  },
+  {
+    "id": "proj-7",
+    "title": "On Set",
+    "category": "Behind The Scenes",
+    "year": "2023",
+    "img": "/images/bts.png",
+    "description": "Behind the scenes — the craft, the crew, and the camera in motion.",
+    "active": true,
+    "featured": false
+  },
+  {
+    "id": "proj-8",
+    "title": "Portrait",
+    "category": "Editorial",
+    "year": "2023",
+    "img": "/images/about.png",
+    "description": "An editorial portrait series exploring texture and single-source light.",
+    "active": true,
+    "featured": false
+  }
+]
