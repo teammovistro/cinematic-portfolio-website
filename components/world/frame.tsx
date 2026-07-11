@@ -1,7 +1,7 @@
 'use client'
 
-import { useRef, useState } from 'react'
-import { useFrame, useThree } from '@react-three/fiber'
+import { useRef, useState, useEffect } from 'react'
+import { useFrame } from '@react-three/fiber'
 import { Image, Text } from '@react-three/drei'
 import * as THREE from 'three'
 import { frameRotY, frameX, frameZ, type Project } from './data'
@@ -10,13 +10,19 @@ const W = 4.2
 const H = 2.4
 
 export function Frame({ project, index }: { project: Project; index: number }) {
-  const { viewport } = useThree()
-  const isMobile = viewport.width < 5.5
+  const [isMobile, setIsMobile] = useState(false)
 
-  const x = isMobile ? (index % 2 === 0 ? -1.1 : 1.1) : frameX(index)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const x = isMobile ? (index % 2 === 0 ? -0.88 : 0.88) : frameX(index)
   const z = frameZ(index)
   const rotY = isMobile ? (index % 2 === 0 ? 0.22 : -0.22) : frameRotY(index)
-  const scale = isMobile ? 0.62 : 1
+  const scale = isMobile ? 0.53 : 1
 
   const imgRef = useRef<THREE.Mesh>(null)
   const lightRef = useRef<THREE.PointLight>(null)

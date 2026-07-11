@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useScroll, Text, Float } from '@react-three/drei'
 import * as THREE from 'three'
@@ -9,8 +9,16 @@ import { useLiveProjects, CAM_START_Z, getCamEndZ, frameZ } from './data'
 
 export function Gallery() {
   const scroll = useScroll()
-  const { camera, viewport } = useThree()
-  const isMobile = viewport.width < 5.5
+  const { camera } = useThree()
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
   const target = useRef(new THREE.Vector3())
   const projects = useLiveProjects()
   const camEndZ = getCamEndZ(projects.length)
@@ -25,13 +33,13 @@ export function Gallery() {
     // subtle mouse parallax
     camera.position.x = THREE.MathUtils.damp(
       camera.position.x,
-      state.pointer.x * (isMobile ? 0.2 : 0.5),
+      state.pointer.x * (isMobile ? 0.15 : 0.5),
       3,
       delta,
     )
     camera.position.y = THREE.MathUtils.damp(
       camera.position.y,
-      0.2 + state.pointer.y * (isMobile ? 0.15 : 0.35),
+      0.2 + state.pointer.y * (isMobile ? 0.12 : 0.35),
       3,
       delta,
     )
@@ -46,8 +54,8 @@ export function Gallery() {
       <Float speed={1.2} rotationIntensity={0.15} floatIntensity={0.4}>
         <Text
           font="/fonts/Archivo-Bold.ttf"
-          fontSize={isMobile ? 0.78 : 1.35}
-          position={[0, 1.1, 2]}
+          fontSize={isMobile ? 0.58 : 1.35}
+          position={[0, isMobile ? 1.25 : 1.1, 2]}
           anchorX="center"
           anchorY="middle"
           color="#f5f5f5"
@@ -57,12 +65,12 @@ export function Gallery() {
         </Text>
         <Text
           font="/fonts/SpaceMono-Regular.ttf"
-          fontSize={isMobile ? 0.11 : 0.2}
-          position={[0, 0.1, 2]}
+          fontSize={isMobile ? 0.082 : 0.2}
+          position={[0, isMobile ? 0.55 : 0.1, 2]}
           anchorX="center"
           anchorY="middle"
           color="#d4a64f"
-          letterSpacing={isMobile ? 0.18 : 0.4}
+          letterSpacing={isMobile ? 0.12 : 0.4}
         >
           CINEMA · PHOTO · MANAGEMENT
         </Text>

@@ -43,17 +43,17 @@ export function Chrome() {
       </header>
 
       {/* bottom hint */}
-      <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 flex items-center justify-between px-5 sm:px-8 md:px-12">
+      <div className="absolute bottom-3 sm:bottom-6 left-0 right-0 flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-0 px-4 sm:px-8 md:px-12 pointer-events-none">
+        <span className="font-mono text-[0.62rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.35em] text-[color:var(--gold)]">
+          Drag / Scroll to explore ↓
+        </span>
         <button
           onClick={() => router.push('/partners')}
           data-cursor="hover"
-          className="pointer-events-auto font-mono text-[0.62rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[color:var(--muted-foreground)] transition-colors hover:text-[color:var(--gold)]"
+          className="pointer-events-auto font-mono text-[0.58rem] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.25em] text-[color:var(--muted-foreground)] transition-colors hover:text-[color:var(--gold)]"
         >
           IT Partner: <span className="text-[color:var(--foreground)]">Micro Logic IT</span>
         </button>
-        <span className="font-mono text-[0.62rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.35em] text-[color:var(--gold)]">
-          Drag / Scroll to explore
-        </span>
       </div>
     </motion.div>
   )

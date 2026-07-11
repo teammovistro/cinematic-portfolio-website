@@ -49,16 +49,16 @@ export function Overlay() {
       {/* intro — fades out on scroll */}
       <section
         style={{ opacity: introOpacity }}
-        className="pointer-events-none flex h-screen w-screen flex-col items-center justify-between py-16 transition-opacity md:py-20 px-4"
+        className="pointer-events-none flex h-screen w-screen flex-col items-center justify-between pt-20 pb-24 sm:py-20 px-5 transition-opacity"
       >
-        <span className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.5em] text-[color:var(--muted-foreground)] text-center">
+        <span className="font-mono text-[0.62rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.5em] text-[color:var(--muted-foreground)] text-center">
           Cinematography · Photography · Management · Marketing
         </span>
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-3 sm:gap-4 pb-6 sm:pb-0">
           <p className="max-w-xs sm:max-w-md text-pretty text-center font-mono text-xs sm:text-sm leading-relaxed text-[color:var(--muted-foreground)]">
             A premier studio crafting cinematography, photography, management & marketing from Faridpur, Bangladesh to the world.
           </p>
-          <span className="font-mono text-[0.68rem] sm:text-[0.7rem] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[color:var(--gold)]">
+          <span className="font-mono text-[0.65rem] sm:text-[0.7rem] uppercase tracking-[0.25em] sm:tracking-[0.4em] text-[color:var(--gold)]">
             Scroll to enter ↓
           </span>
         </div>
