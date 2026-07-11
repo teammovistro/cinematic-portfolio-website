@@ -43,30 +43,30 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-[color:var(--gold)] selection:text-background">
       {/* Navigation Header */}
-      <header className="sticky top-0 z-50 flex items-center justify-between border-b border-border/60 bg-background/80 backdrop-blur-md px-8 py-6 md:px-12">
+      <header className="sticky top-0 z-50 flex items-center justify-between border-b border-border/60 bg-background/80 backdrop-blur-md px-4 py-4 sm:px-8 sm:py-6 md:px-12">
         <Link
           href="/"
-          className="flex items-center gap-2 font-display text-xl uppercase tracking-tight hover:text-[color:var(--gold)] transition-colors"
+          className="flex items-center gap-2 font-display text-base sm:text-xl uppercase tracking-tight hover:text-[color:var(--gold)] transition-colors"
         >
-          <Clapperboard className="h-5 w-5 text-[color:var(--gold)]" />
+          <Clapperboard className="h-4 w-4 sm:h-5 sm:w-5 text-[color:var(--gold)]" />
           Movistro
         </Link>
-        <nav className="flex items-center gap-6 md:gap-8">
+        <nav className="flex items-center gap-4 sm:gap-6 md:gap-8">
           <Link
             href="/about"
-            className="font-mono text-xs uppercase tracking-[0.25em] text-[color:var(--gold)] transition-colors"
+            className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[color:var(--gold)] transition-colors"
           >
             About
           </Link>
           <Link
             href="/partners"
-            className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-[color:var(--gold)] transition-colors"
+            className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-muted-foreground hover:text-[color:var(--gold)] transition-colors"
           >
             Partners
           </Link>
           <Link
             href="/booking"
-            className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-[color:var(--gold)] transition-colors"
+            className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-muted-foreground hover:text-[color:var(--gold)] transition-colors"
           >
             Contact
           </Link>

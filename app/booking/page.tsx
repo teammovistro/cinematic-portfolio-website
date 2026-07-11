@@ -38,18 +38,18 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* header */}
-      <header className="flex items-center justify-between border-b border-border px-8 py-6 md:px-12">
+      <header className="flex items-center justify-between border-b border-border px-4 py-4 sm:px-8 sm:py-6 md:px-12">
         <Link
           href="/"
-          className="flex items-center gap-2 font-display text-lg uppercase tracking-tight hover:text-gold transition-colors"
+          className="flex items-center gap-2 font-display text-base sm:text-lg uppercase tracking-tight hover:text-gold transition-colors"
         >
-          <Clapperboard className="h-5 w-5 text-gold" />
+          <Clapperboard className="h-4 w-4 sm:h-5 sm:w-5 text-gold" />
           Movistro
         </Link>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 sm:gap-6">
           <Link
             href="/"
-            className="flex items-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground hover:text-gold transition-colors"
+            className="flex items-center gap-1 sm:gap-1.5 font-mono text-[0.65rem] sm:text-[0.7rem] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-muted-foreground hover:text-gold transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Back
           </Link>

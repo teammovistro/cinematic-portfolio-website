@@ -18,7 +18,7 @@ function Panel({
         : 'items-center text-center'
   return (
     <section
-      className={`flex h-screen w-screen flex-col justify-center gap-4 px-8 md:px-20 ${justify}`}
+      className={`flex h-screen w-screen flex-col justify-center gap-3 sm:gap-4 px-6 sm:px-10 md:px-20 ${justify}`}
     >
       {children}
     </section>
@@ -49,16 +49,16 @@ export function Overlay() {
       {/* intro — fades out on scroll */}
       <section
         style={{ opacity: introOpacity }}
-        className="pointer-events-none flex h-screen w-screen flex-col items-center justify-between py-16 transition-opacity md:py-20"
+        className="pointer-events-none flex h-screen w-screen flex-col items-center justify-between py-16 transition-opacity md:py-20 px-4"
       >
-        <span className="font-mono text-xs uppercase tracking-[0.5em] text-[color:var(--muted-foreground)]">
+        <span className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.5em] text-[color:var(--muted-foreground)] text-center">
           Cinematography · Photography · Management · Marketing
         </span>
         <div className="flex flex-col items-center gap-4">
-          <p className="max-w-md text-pretty text-center font-mono text-sm leading-relaxed text-[color:var(--muted-foreground)]">
+          <p className="max-w-xs sm:max-w-md text-pretty text-center font-mono text-xs sm:text-sm leading-relaxed text-[color:var(--muted-foreground)]">
             A premier studio crafting cinematography, photography, management & marketing from Faridpur, Bangladesh to the world.
           </p>
-          <span className="font-mono text-[0.7rem] uppercase tracking-[0.4em] text-[color:var(--gold)]">
+          <span className="font-mono text-[0.65rem] sm:text-[0.7rem] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[color:var(--gold)]">
             Scroll to enter ↓
           </span>
         </div>
@@ -67,13 +67,13 @@ export function Overlay() {
       {/* one caption panel per artwork, placed opposite the frame */}
       {projects.map((p, i) => (
         <Panel key={p.id || p.title} align={i % 2 === 0 ? 'right' : 'left'}>
-          <span className="font-mono text-xs uppercase tracking-[0.4em] text-[color:var(--gold)]">
+          <span className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.4em] text-[color:var(--gold)]">
             {p.category} · {p.year}
           </span>
-          <h2 className="font-display text-5xl uppercase leading-none tracking-tight text-[color:var(--foreground)] md:text-7xl">
+          <h2 className="font-display text-3xl sm:text-5xl uppercase leading-none tracking-tight text-[color:var(--foreground)] md:text-7xl">
             {p.title}
           </h2>
-          <p className="max-w-xs text-pretty text-sm leading-relaxed text-[color:var(--muted-foreground)]">
+          <p className="max-w-xs text-pretty text-xs sm:text-sm leading-relaxed text-[color:var(--muted-foreground)]">
             {p.description || DESCRIPTIONS[i] || 'Cinematic exploration.'}
           </p>
         </Panel>
@@ -81,28 +81,28 @@ export function Overlay() {
 
       {/* contact */}
       <Panel>
-        <span className="font-mono text-xs uppercase tracking-[0.5em] text-[color:var(--gold)]">
+        <span className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.5em] text-[color:var(--gold)]">
           Start a project
         </span>
-        <h2 className="text-balance font-display text-4xl uppercase leading-tight tracking-tight text-[color:var(--foreground)] md:text-6xl">
+        <h2 className="text-balance font-display text-3xl sm:text-4xl uppercase leading-tight tracking-tight text-[color:var(--foreground)] md:text-6xl">
           Ready when you are
         </h2>
-        <div className="mt-6 flex flex-col items-center justify-center">
+        <div className="mt-4 sm:mt-6 flex flex-col items-center justify-center">
           <a
             href="/booking"
             data-cursor="hover"
-            className="pointer-events-auto inline-flex items-center justify-center rounded-sm bg-[color:var(--gold)] px-10 py-5 font-mono text-sm uppercase tracking-[0.25em] text-background shadow-[0_0_35px_rgba(212,166,79,0.5)] transition-all hover:bg-foreground hover:text-background hover:scale-105 font-bold"
+            className="pointer-events-auto inline-flex items-center justify-center rounded-sm bg-[color:var(--gold)] px-8 py-4 sm:px-10 sm:py-5 font-mono text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.25em] text-background shadow-[0_0_35px_rgba(212,166,79,0.5)] transition-all hover:bg-foreground hover:text-background hover:scale-105 font-bold"
           >
             ✦ Book Now
           </a>
         </div>
-        <span className="mt-8 font-mono text-[0.7rem] uppercase tracking-[0.35em] text-[color:var(--muted-foreground)]">
+        <span className="mt-6 sm:mt-8 font-mono text-[0.65rem] sm:text-[0.7rem] uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[color:var(--muted-foreground)] text-center">
           Faridpur, Bangladesh — Worldwide
         </span>
         <a
           href="/partners"
           data-cursor="hover"
-          className="pointer-events-auto mt-3 font-mono text-[0.65rem] uppercase tracking-[0.3em] text-[color:var(--gold)]/80 hover:text-[color:var(--gold)] transition-colors"
+          className="pointer-events-auto mt-2 sm:mt-3 text-center font-mono text-[0.58rem] sm:text-[0.65rem] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[color:var(--gold)]/80 hover:text-[color:var(--gold)] transition-colors"
         >
           Official IT Partner & Website Architect: Micro Logic IT
         </a>
