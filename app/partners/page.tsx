@@ -71,12 +71,6 @@ export default function PartnersPage() {
           >
             Contact
           </Link>
-          <Link
-            href="/admin"
-            className="hidden sm:inline-block font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-[color:var(--gold)] transition-colors"
-          >
-            Admin OS
-          </Link>
         </nav>
       </header>
 

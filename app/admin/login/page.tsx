@@ -144,12 +144,10 @@ export default function AdminLogin() {
           </button>
         </form>
 
-        {/* Demo Hint */}
+        {/* Security Notice */}
         <div className="mt-8 border-t border-border/60 pt-6 text-center">
-          <p className="font-mono text-[0.7rem] uppercase tracking-widest text-muted-foreground">
-            Default Credentials:{' '}
-            <span className="font-bold text-gold">admin</span> /{' '}
-            <span className="font-bold text-gold">movistro</span>
+          <p className="font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground">
+            🔒 Restricted Area · Studio Executives Only
           </p>
         </div>
       </motion.div>

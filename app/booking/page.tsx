@@ -48,12 +48,6 @@ export default function BookingPage() {
         </Link>
         <div className="flex items-center gap-6">
           <Link
-            href="/admin"
-            className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground hover:text-gold transition-colors"
-          >
-            Admin OS
-          </Link>
-          <Link
             href="/"
             className="flex items-center gap-1.5 font-mono text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground hover:text-gold transition-colors"
           >
@@ -89,12 +83,6 @@ export default function BookingPage() {
                   className="rounded-sm border border-border bg-section px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground transition-all hover:border-gold"
                 >
                   Return to 3D World
-                </Link>
-                <Link
-                  href="/admin/inquiries"
-                  className="flex items-center gap-2 rounded-sm bg-gold px-6 py-3 font-mono text-xs uppercase tracking-widest text-background transition-all hover:bg-foreground hover:text-background"
-                >
-                  <Sparkles className="h-3.5 w-3.5" /> View in Admin CRM
                 </Link>
               </div>
             </motion.div>
@@ -274,10 +262,7 @@ export default function BookingPage() {
       {/* footer */}
       <footer className="border-t border-border px-8 py-6 text-center md:px-12">
         <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-          Est. 2024 · Cinematography · Photography · Management · Marketing ·{' '}
-          <Link href="/admin" className="text-gold hover:underline">
-            Admin Suite
-          </Link>
+          Est. 2024 · Cinematography · Photography · Management · Marketing
         </p>
       </footer>
     </div>

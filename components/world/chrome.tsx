@@ -39,13 +39,6 @@ export function Chrome() {
           >
             Contact
           </button>
-          <button
-            onClick={() => router.push('/admin')}
-            data-cursor="hover"
-            className="pointer-events-auto font-mono text-[0.7rem] uppercase tracking-[0.3em] text-[color:var(--muted-foreground)] transition-colors hover:text-[color:var(--gold)]"
-          >
-            Admin OS
-          </button>
         </div>
       </header>
 
