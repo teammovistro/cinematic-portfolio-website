@@ -85,6 +85,34 @@ export default function AboutPage() {
         <div className="pointer-events-none absolute left-1/2 top-10 -translate-x-1/2 h-96 w-96 rounded-full bg-[color:var(--gold)]/10 blur-[120px]" />
 
         <div className="mx-auto max-w-5xl text-center">
+          {/* JSON-LD Schema for MOVISTRO Studio */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'MOVISTRO',
+                alternateName: 'Movistro Studio Bangladesh',
+                url: 'https://cinematic-portfolio-website-git-main-movistro.vercel.app',
+                logo: 'https://cinematic-portfolio-website-git-main-movistro.vercel.app/logo.png',
+                description:
+                  'Premier cinematography, photography, management, and global marketing studio headquartered in Faridpur, Bangladesh.',
+                address: {
+                  '@type': 'PostalAddress',
+                  addressLocality: 'Faridpur',
+                  addressCountry: 'Bangladesh',
+                },
+                contactPoint: {
+                  '@type': 'ContactPoint',
+                  telephone: '+880 1793-602999',
+                  contactType: 'Customer Support',
+                  areaServed: 'Worldwide',
+                },
+              }),
+            }}
+          />
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -92,7 +120,7 @@ export default function AboutPage() {
             className="inline-flex items-center gap-2 rounded-full border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-1.5 font-mono text-xs uppercase tracking-[0.3em] text-[color:var(--gold)]"
           >
             <Sparkles className="h-3.5 w-3.5" />
-            The Studio Story
+            About MOVISTRO Studio
           </motion.div>
 
           <motion.h1
@@ -101,8 +129,8 @@ export default function AboutPage() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="mt-8 font-display text-5xl uppercase leading-none tracking-tight md:text-7xl lg:text-8xl"
           >
-            Cinematic Vision. <br />
-            <span className="text-[color:var(--gold)]">Timeless Craft.</span>
+            MOVISTRO <br />
+            <span className="text-[color:var(--gold)]">Cinematography & Craft.</span>
           </motion.h1>
 
           <motion.p
@@ -111,7 +139,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="mx-auto mt-8 max-w-3xl text-pretty font-mono text-sm leading-relaxed text-muted-foreground md:text-base"
           >
-            Movistro is a premier cinematography, photography, management, and marketing studio headquartered in Faridpur, Bangladesh. Founded with an obsession for cinematic perfection, we transform ideas into powerful visual experiences that captivate audiences worldwide.
+            <strong className="text-foreground">MOVISTRO</strong> is a world-class cinematography, editorial photography, talent management, and digital marketing agency headquartered in Faridpur, Bangladesh. We blend cutting-edge cinematic technique with compelling storytelling to elevate brands and artists onto the global stage.
           </motion.p>
         </div>
       </section>
@@ -187,6 +215,61 @@ export default function AboutPage() {
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Dedicated MOVISTRO SEO Knowledge Base & Studio FAQ */}
+      <section className="border-t border-border/50 bg-card/20 px-8 py-20 md:px-16">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-14 text-center">
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-[color:var(--gold)]">
+              MOVISTRO Knowledge Base
+            </span>
+            <h2 className="mt-2 font-display text-3xl uppercase tracking-tight md:text-5xl">
+              Frequently Asked About MOVISTRO
+            </h2>
+            <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              Everything you need to know about our premier agency
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="rounded-xl border border-border/60 bg-card/50 p-7">
+              <h3 className="font-display text-lg uppercase text-[color:var(--gold)]">
+                What is MOVISTRO?
+              </h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
+                <strong className="text-foreground">MOVISTRO</strong> is a full-service, high-end cinematography, commercial photography, talent management, and digital brand marketing agency headquartered in Faridpur, Bangladesh, operating worldwide.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border/60 bg-card/50 p-7">
+              <h3 className="font-display text-lg uppercase text-[color:var(--gold)]">
+                Where is MOVISTRO located?
+              </h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
+                Our primary production studio and headquarters are based in <strong className="text-foreground">Faridpur, Bangladesh</strong>. However, our creative directors, cinematographers, and management teams deploy globally for international campaigns and feature productions.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border/60 bg-card/50 p-7">
+              <h3 className="font-display text-lg uppercase text-[color:var(--gold)]">
+                What services does MOVISTRO offer?
+              </h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
+                We specialize in 4 core pillars: <strong className="text-foreground">Cinematography & Film Direction</strong>, <strong className="text-foreground">High-Fashion & Commercial Photography</strong>, <strong className="text-foreground">Celebrity & Talent Management</strong>, and <strong className="text-foreground">Global Brand Marketing</strong>.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border/60 bg-card/50 p-7">
+              <h3 className="font-display text-lg uppercase text-[color:var(--gold)]">
+                Who builds and manages MOVISTRO&apos;s digital platform?
+              </h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
+                Our official IT partner, cloud infrastructure provider, and interactive 3D website architect is <strong className="text-foreground">Micro Logic IT</strong>, ensuring state-of-the-art performance and security.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
