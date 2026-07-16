@@ -58,12 +58,14 @@ export function AdminSidebar() {
       <div>
         <div className="mb-6 flex items-center justify-between border-b border-border pb-6">
           <Link href="/admin" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-gold text-background shadow-[0_0_15px_rgba(212,166,79,0.3)]">
-              <Clapperboard className="h-5 w-5" />
-            </div>
+            <img
+              src="/images/logo.jpg"
+              alt="Movistro Logo"
+              className="h-10 w-10 rounded-sm border border-gold/40 object-contain shadow-[0_0_15px_rgba(212,166,79,0.3)]"
+            />
             <div>
-              <span className="block font-display text-base uppercase tracking-tight text-foreground">
-                Movistro
+              <span className="block font-display text-base uppercase tracking-tight text-foreground font-bold">
+                MOVISTRO
               </span>
               <span className="block font-mono text-[0.65rem] uppercase tracking-widest text-gold">
                 Studio OS v2.4

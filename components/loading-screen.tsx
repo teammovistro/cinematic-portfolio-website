@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 export function LoadingScreen({ onDone }: { onDone?: () => void }) {
+  const [mounted, setMounted] = useState(false)
   const [count, setCount] = useState(0)
   const [open, setOpen] = useState(false)
   const [gone, setGone] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const duration = 1800
     const start = Date.now()
     let finished = false
@@ -46,6 +48,8 @@ export function LoadingScreen({ onDone }: { onDone?: () => void }) {
     }
   }, [onDone])
 
+  if (!mounted) return null
+
   return (
     <AnimatePresence>
       {!gone && (
@@ -64,13 +68,26 @@ export function LoadingScreen({ onDone }: { onDone?: () => void }) {
           </header>
 
           {/* Center Clean Typography */}
-          <div className="relative z-10 my-auto flex flex-col items-center justify-center">
+          <div className="relative z-10 my-auto flex flex-col items-center justify-center text-center">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: open ? 1.05 : 1, opacity: open ? 0 : 1 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-6"
+            >
+              <img
+                src="/images/logo.jpg"
+                alt="Movistro Monogram"
+                className="h-24 sm:h-32 md:h-36 w-auto rounded-lg border border-gold/40 object-contain shadow-[0_0_45px_rgba(212,166,79,0.35)]"
+              />
+            </motion.div>
+
             <div className="overflow-hidden py-2">
               <motion.h1
                 initial={{ y: '100%', opacity: 0 }}
                 animate={{ y: open ? '-100%' : '0%', opacity: open ? 0 : 1 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display text-5xl sm:text-7xl md:text-9xl uppercase tracking-[0.2em] text-[#f2f2f2] font-normal sm:ml-[0.2em]"
+                className="font-display text-4xl sm:text-6xl md:text-8xl uppercase tracking-[0.25em] text-[#f2f2f2] font-bold sm:ml-[0.25em]"
               >
                 MOVISTRO
               </motion.h1>

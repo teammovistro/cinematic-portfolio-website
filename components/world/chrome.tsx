@@ -18,9 +18,13 @@ export function Chrome() {
     >
       {/* top bar */}
       <header className="flex items-center justify-between px-4 py-3 sm:px-8 sm:py-6 md:px-12 bg-gradient-to-b from-background/95 via-background/60 to-transparent">
-        <span className="flex items-center gap-2 font-display text-base sm:text-lg uppercase tracking-tight text-[color:var(--foreground)] drop-shadow-sm">
-          <Clapperboard className="h-4 w-4 text-[color:var(--gold)]" />
-          Movistro
+        <span className="flex items-center gap-2.5 font-display text-base sm:text-lg uppercase tracking-tight text-[color:var(--foreground)] drop-shadow-sm">
+          <img
+            src="/images/logo.jpg"
+            alt="Movistro Monogram Logo"
+            className="h-8 sm:h-9 w-auto rounded border border-gold/40 object-contain shadow-[0_0_15px_rgba(212,166,79,0.25)]"
+          />
+          <span className="tracking-widest font-bold">MOVISTRO</span>
         </span>
 
         {/* Desktop Navigation */}

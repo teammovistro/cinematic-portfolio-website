@@ -50,15 +50,11 @@ export default function PortfolioPage() {
       })
   }, [])
 
-  const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category)))]
-
   const filteredProjects = projects.filter((p) => {
     const matchesSearch =
       p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (p.description && p.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      p.category.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesCat = selectedCategory === 'All' || p.category === selectedCategory
-    return matchesSearch && matchesCat
+      (p.description && p.description.toLowerCase().includes(searchQuery.toLowerCase()))
+    return matchesSearch
   })
 
   // Technical camera and color grading simulation based on category
@@ -105,10 +101,12 @@ export default function PortfolioPage() {
           href="/"
           className="flex items-center gap-2.5 font-display text-base sm:text-xl uppercase tracking-tight hover:text-[color:var(--gold)] transition-colors"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-sm bg-[color:var(--gold)] text-background shadow-[0_0_15px_rgba(212,166,79,0.3)]">
-            <Clapperboard className="h-4 w-4" />
-          </div>
-          <span>Movistro</span>
+          <img
+            src="/images/logo.jpg"
+            alt="Movistro Monogram Logo"
+            className="h-8 sm:h-9 w-auto rounded border border-gold/40 object-contain shadow-[0_0_15px_rgba(212,166,79,0.25)]"
+          />
+          <span className="tracking-widest font-bold">MOVISTRO</span>
         </Link>
         <nav className="flex items-center gap-2.5 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-none py-1">
           <Link
@@ -191,10 +189,10 @@ export default function PortfolioPage() {
             </div>
             <div className="border-r border-border/50 px-2 sm:last:border-r-0">
               <span className="block font-display text-2xl sm:text-3xl font-bold text-foreground">
-                {categories.length - 1}
+                100%
               </span>
               <span className="font-mono text-[0.65rem] uppercase tracking-widest text-muted-foreground">
-                Disciplines
+                Cinematic Quality
               </span>
             </div>
             <div className="border-r border-border/50 px-2 last:border-r-0 sm:last:border-r-0">
@@ -220,21 +218,11 @@ export default function PortfolioPage() {
       {/* Filter and Search Section */}
       <section className="sticky top-16 z-40 border-y border-border/70 bg-background/90 px-4 py-4 backdrop-blur-xl sm:px-8 md:px-12">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 lg:flex-row lg:items-center">
-          {/* Category Pills */}
-          <div className="flex flex-wrap items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`whitespace-nowrap rounded-sm px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider transition-all ${
-                  selectedCategory === cat
-                    ? 'bg-[color:var(--gold)] text-background font-bold shadow-[0_0_15px_rgba(212,166,79,0.35)] scale-105'
-                    : 'border border-border/80 bg-surface/60 text-muted-foreground hover:border-[color:var(--gold)]/50 hover:text-foreground'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Title / Studio Status */}
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-[color:var(--gold)] font-bold">
+              ✦ COMPLETE PRODUCTION ARCHIVE
+            </span>
           </div>
 
           {/* Search & View Switcher */}
@@ -372,8 +360,8 @@ export default function PortfolioPage() {
                   {/* Content Breakdown */}
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
-                      <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-[color:var(--gold)]">
-                        {project.category}
+                      <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-[color:var(--gold)] font-bold">
+                        {project.year}
                       </span>
                       <h3 className="mt-1 font-display text-2xl uppercase tracking-tight text-foreground group-hover:text-[color:var(--gold)] transition-colors line-clamp-1">
                         {project.title}
@@ -411,10 +399,8 @@ export default function PortfolioPage() {
                     </span>
 
                     <div className="flex flex-col">
-                      <div className="flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-[color:var(--gold)]">
-                        <span>{project.category}</span>
-                        <span>·</span>
-                        <span className="text-muted-foreground">{project.year}</span>
+                      <div className="flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-widest text-[color:var(--gold)] font-bold">
+                        <span>{project.year}</span>
                       </div>
                       <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-foreground group-hover:text-[color:var(--gold)] transition-colors mt-0.5">
                         {project.title}
@@ -457,8 +443,8 @@ export default function PortfolioPage() {
                           <Sparkles className="h-3.5 w-3.5" />
                           Master Reel #{String(idx + 1).padStart(2, '0')}
                         </span>
-                        <span className="rounded-full bg-section px-3 py-1 font-mono text-xs text-muted-foreground">
-                          {project.year} · {project.category}
+                        <span className="rounded-full bg-section px-3.5 py-1 font-mono text-xs font-bold text-foreground/90 border border-border/80">
+                          {project.year}
                         </span>
                       </div>
 
@@ -535,8 +521,8 @@ export default function PortfolioPage() {
             >
               {/* Modal Top Bar */}
               <div className="flex items-center justify-between border-b border-border bg-section/90 px-6 py-4">
-                <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-[color:var(--gold)]">
-                  <Clapperboard className="h-4 w-4" />
+                <div className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-widest text-[color:var(--gold)]">
+                  <img src="/images/logo.jpg" alt="Movistro Logo" className="h-5 w-auto rounded object-contain" />
                   <span>Movistro Studio · Master Production File</span>
                 </div>
                 <button
@@ -568,7 +554,7 @@ export default function PortfolioPage() {
                     REC ● 23.98 FPS · ISO 800
                   </div>
                   <div className="absolute right-4 bottom-4 z-10 font-mono text-[0.65rem] text-white/70 uppercase">
-                    {activeModalProject.category} / {activeModalProject.year}
+                    {activeModalProject.year}
                   </div>
                 </div>
 
@@ -576,14 +562,14 @@ export default function PortfolioPage() {
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-border/70 pb-6">
                   <div>
                     <span className="font-mono text-xs uppercase tracking-[0.25em] text-[color:var(--gold)] font-bold">
-                      {activeModalProject.category} · {activeModalProject.year}
+                      {activeModalProject.year}
                     </span>
                     <h2 className="mt-1 font-display text-3xl sm:text-5xl uppercase tracking-tight text-foreground">
                       {activeModalProject.title}
                     </h2>
                   </div>
                   <Link
-                    href={`/booking?type=${activeModalProject.category.toLowerCase()}`}
+                    href="/booking"
                     className="inline-flex items-center justify-center gap-2 rounded-sm bg-[color:var(--gold)] px-7 py-3 font-mono text-xs uppercase tracking-widest text-background font-bold shadow-[0_0_20px_rgba(212,166,79,0.4)] hover:bg-foreground hover:text-background transition-all whitespace-nowrap"
                   >
                     <span>✦ Book This Production Style</span>

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://cinematic-portfolio-website-git-main-movistro.vercel.app'
+  const baseUrl = 'https://movistro.com'
 
   return [
     {

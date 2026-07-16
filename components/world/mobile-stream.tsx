@@ -109,7 +109,7 @@ export function MobileStream({ onNavigate }: { onNavigate?: (path: string) => vo
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
               <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-full border border-[color:var(--gold)]/30">
                 <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-[color:var(--gold)] font-medium">
-                  {String(i + 1).padStart(2, '0')} // {p.category}
+                  {String(i + 1).padStart(2, '0')} // {p.year}
                 </span>
               </div>
             </div>
@@ -117,8 +117,7 @@ export function MobileStream({ onNavigate }: { onNavigate?: (path: string) => vo
             {/* Project Details */}
             <div className="p-5 flex flex-col gap-1.5 text-left">
               <div className="flex items-center justify-between text-muted-foreground font-mono text-[0.65rem] uppercase tracking-wider">
-                <span>{p.category}</span>
-                <span className="text-[color:var(--gold)]/80">{p.year}</span>
+                <span className="text-[color:var(--gold)]/80 font-bold">{p.year}</span>
               </div>
               <h2 className="font-display text-2xl uppercase tracking-tight text-foreground font-bold">
                 {p.title}

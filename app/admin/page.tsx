@@ -287,7 +287,10 @@ export default function AdminDashboard() {
                 <tr key={inq.id} className="group transition-colors hover:bg-section/50">
                   <td className="py-4">
                     <span className="font-bold text-foreground block">{inq.name}</span>
-                    <span className="text-[0.7rem] text-muted-foreground">{inq.email}</span>
+                    <span className="text-[0.7rem] text-muted-foreground block">{inq.email}</span>
+                    {inq.phone && (
+                      <span className="text-[0.7rem] text-gold/90 block">📞 {inq.phone}</span>
+                    )}
                   </td>
                   <td className="py-4 capitalize">
                     <span className="rounded-full border border-border bg-section px-2.5 py-1 text-[0.7rem]">

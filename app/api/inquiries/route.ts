@@ -29,6 +29,7 @@ export async function POST(req: Request) {
       id: `inq-${Date.now()}`,
       name: body.name || 'Anonymous Client',
       email: body.email || 'no-reply@example.com',
+      phone: body.phone || '',
       type: body.type || 'general',
       budget: body.budget || 'Not specified',
       message: body.message || '',

@@ -112,10 +112,9 @@ export function Frame({ project, index }: { project: Project; index: number }) {
             position={[-W / 2, -H / 2 - 0.78, 0]}
             anchorX="left"
             anchorY="top"
-            color="#d4a64f"
             letterSpacing={0.15}
           >
-            {`${String(index + 1).padStart(2, '0')} — ${project.category.toUpperCase()}`}
+            {`${String(index + 1).padStart(2, '0')} — ${project.year}`}
           </Text>
         </>
       )}

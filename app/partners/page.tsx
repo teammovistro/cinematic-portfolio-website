@@ -47,10 +47,14 @@ export default function PartnersPage() {
       <header className="sticky top-0 z-50 flex items-center justify-between border-b border-border/60 bg-background/80 backdrop-blur-md px-4 py-4 sm:px-8 sm:py-6 md:px-12">
         <Link
           href="/"
-          className="flex items-center gap-2 font-display text-base sm:text-xl uppercase tracking-tight hover:text-[color:var(--gold)] transition-colors"
+          className="flex items-center gap-2.5 font-display text-base sm:text-xl uppercase tracking-tight hover:text-[color:var(--gold)] transition-colors"
         >
-          <Clapperboard className="h-4 w-4 sm:h-5 sm:w-5 text-[color:var(--gold)]" />
-          Movistro
+          <img
+            src="/images/logo.jpg"
+            alt="Movistro Monogram Logo"
+            className="h-8 sm:h-9 w-auto rounded border border-gold/40 object-contain shadow-[0_0_15px_rgba(212,166,79,0.25)]"
+          />
+          <span className="tracking-widest font-bold">MOVISTRO</span>
         </Link>
         <nav className="flex items-center gap-2.5 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-none py-1">
           <Link

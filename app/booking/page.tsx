@@ -25,6 +25,7 @@ export default function BookingPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     type: '',
     message: '',
     budget: '',
@@ -149,10 +150,14 @@ export default function BookingPage() {
       <header className="flex items-center justify-between border-b border-border px-4 py-4 sm:px-8 sm:py-6 md:px-12">
         <Link
           href="/"
-          className="flex items-center gap-2 font-display text-base sm:text-lg uppercase tracking-tight hover:text-gold transition-colors"
+          className="flex items-center gap-2.5 font-display text-base sm:text-lg uppercase tracking-tight hover:text-gold transition-colors"
         >
-          <Clapperboard className="h-4 w-4 sm:h-5 sm:w-5 text-gold" />
-          Movistro
+          <img
+            src="/images/logo.jpg"
+            alt="Movistro Monogram Logo"
+            className="h-8 sm:h-9 w-auto rounded border border-gold/40 object-contain shadow-[0_0_15px_rgba(212,166,79,0.25)]"
+          />
+          <span className="tracking-widest font-bold">MOVISTRO</span>
         </Link>
         <div className="flex items-center gap-3 sm:gap-6">
           <Link
@@ -314,6 +319,26 @@ export default function BookingPage() {
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full border-b border-gold bg-transparent px-0 py-2 font-mono text-sm placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors"
                     placeholder="hello@example.com"
+                  />
+                </div>
+
+                {/* phone */}
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="block font-mono text-xs uppercase tracking-widest text-foreground mb-3"
+                  >
+                    Phone / WhatsApp Number *
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full border-b border-gold bg-transparent px-0 py-2 font-mono text-sm placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors"
+                    placeholder="+880 17XX-XXXXXX"
                   />
                 </div>
 

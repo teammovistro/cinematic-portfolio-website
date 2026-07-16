@@ -18,6 +18,7 @@ export interface InquiryItem {
   id: string
   name: string
   email: string
+  phone?: string
   type: string
   budget?: string
   message: string
@@ -181,6 +182,7 @@ export async function sendTelegramNotification(inquiry: InquiryItem): Promise<vo
     const text = `🎬 *NEW CINEMATIC INQUIRY RECEIVED*\n\n` +
       `*Client:* ${inquiry.name}\n` +
       `*Email:* \`${inquiry.email}\`\n` +
+      `*Phone:* \`${inquiry.phone || 'Not Provided'}\`\n` +
       `*Project Type:* #${inquiry.type.toUpperCase()}\n` +
       `*Proposed Budget:* ${inquiry.budget || 'Not Specified'}\n\n` +
       `*Project Brief & Treatment:*\n_"${inquiry.message}"_\n\n` +

@@ -18,7 +18,8 @@ import {
   Send, 
   FileText,
   Sparkles,
-  ExternalLink
+  ExternalLink,
+  Phone
 } from 'lucide-react'
 import { motion } from 'framer-motion'
 
@@ -266,6 +267,9 @@ export default function InquiriesCRM() {
                   {inq.name}
                 </h3>
                 <p className="font-mono text-xs text-muted-foreground">{inq.email}</p>
+                {inq.phone && (
+                  <p className="font-mono text-xs text-gold/90 mt-0.5">📞 {inq.phone}</p>
+                )}
 
                 <div className="mt-4 border-l-2 border-gold/40 pl-3">
                   <p className="line-clamp-3 font-mono text-xs leading-relaxed text-foreground/90">
@@ -340,9 +344,14 @@ export default function InquiriesCRM() {
                   <User className="h-3.5 w-3.5 text-gold" /> Client Contact
                 </span>
                 <p className="font-display text-base uppercase text-foreground">{selectedInquiry.name}</p>
-                <a href={`mailto:${selectedInquiry.email}`} className="font-mono text-xs text-gold hover:underline">
-                  {selectedInquiry.email}
+                <a href={`mailto:${selectedInquiry.email}`} className="block font-mono text-xs text-gold hover:underline">
+                  ✉ {selectedInquiry.email}
                 </a>
+                {selectedInquiry.phone && (
+                  <a href={`tel:${selectedInquiry.phone}`} className="block font-mono text-xs text-foreground/90 hover:text-gold mt-1">
+                    📞 {selectedInquiry.phone}
+                  </a>
+                )}
               </div>
 
               <div>

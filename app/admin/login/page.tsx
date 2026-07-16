@@ -79,11 +79,13 @@ export default function AdminLogin() {
       >
         {/* Brand Header */}
         <div className="mb-8 flex flex-col items-center text-center">
-          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-sm border border-gold/40 bg-section text-gold shadow-[0_0_25px_rgba(212,166,79,0.2)]">
-            <Clapperboard className="h-7 w-7" />
-          </div>
-          <h1 className="font-display text-2xl uppercase tracking-tight text-foreground md:text-3xl">
-            Movistro Studio
+          <img
+            src="/images/logo.jpg"
+            alt="Movistro Logo"
+            className="mb-4 h-20 w-auto rounded border border-gold/40 object-contain shadow-[0_0_35px_rgba(212,166,79,0.3)]"
+          />
+          <h1 className="font-display text-2xl uppercase tracking-tight text-foreground md:text-3xl font-bold">
+            MOVISTRO STUDIO
           </h1>
           <span className="mt-1 font-mono text-xs uppercase tracking-[0.3em] text-gold">
             Executive Access OS

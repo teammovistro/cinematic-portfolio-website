@@ -135,7 +135,7 @@ export function Overlay({ onNavigate }: { onNavigate?: (path: string) => void })
         <Panel key={p.id || p.title} align={i % 2 === 0 ? 'right' : 'left'}>
           <div className="flex flex-col items-center md:items-inherit bg-black/65 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-5 sm:p-0 rounded-2xl sm:rounded-none border sm:border-0 border-white/10 max-w-[90vw] sm:max-w-none shadow-2xl sm:shadow-none pointer-events-auto">
             <span className="font-mono text-[0.68rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.4em] text-[color:var(--gold)] font-medium">
-              {String(i + 1).padStart(2, '0')} // {p.category} · {p.year}
+              {String(i + 1).padStart(2, '0')} // {p.year}
             </span>
             <h2 className="font-display text-2xl sm:text-5xl uppercase leading-none tracking-tight text-[color:var(--foreground)] md:text-7xl mt-1.5 drop-shadow-md">
               {p.title}
