@@ -26,7 +26,7 @@ export default function StudioSettings() {
     tagline: 'Cinematography · Photography · Management · Marketing',
     foundedYear: '2024',
     email: 'hello@movistro.com',
-    phone: '+880 1700-000000',
+    phone: '+880 1793-602999',
     location: 'Faridpur, Bangladesh — Worldwide',
     aboutText: 'A global production studio providing premier Cinematography, Photography, Talent Management, and Strategic Film Marketing.',
     enableVignette: true,

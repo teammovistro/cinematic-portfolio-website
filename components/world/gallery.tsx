@@ -10,7 +10,9 @@ import { useLiveProjects, CAM_START_Z, getCamEndZ, frameZ } from './data'
 export function Gallery() {
   const scroll = useScroll()
   const { camera } = useThree()
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  )
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
@@ -26,21 +28,21 @@ export function Gallery() {
   useFrame((state, delta) => {
     const offset = scroll.offset
 
-    // travel forward through the hall
+    // travel forward through the hall in tight synchronization with ScrollControls
     const z = THREE.MathUtils.lerp(CAM_START_Z, camEndZ, offset)
-    camera.position.z = THREE.MathUtils.damp(camera.position.z, z, 6, delta)
+    camera.position.z = THREE.MathUtils.damp(camera.position.z, z, isMobile ? 20 : 16, delta)
 
-    // subtle mouse parallax
+    // subtle mouse parallax on desktop, locked steady orientation on mobile for zero dizziness
     camera.position.x = THREE.MathUtils.damp(
       camera.position.x,
-      state.pointer.x * (isMobile ? 0.15 : 0.5),
-      3,
+      state.pointer.x * (isMobile ? 0.08 : 0.5),
+      5,
       delta,
     )
     camera.position.y = THREE.MathUtils.damp(
       camera.position.y,
-      0.2 + state.pointer.y * (isMobile ? 0.12 : 0.35),
-      3,
+      0.2 + state.pointer.y * (isMobile ? 0.03 : 0.35),
+      5,
       delta,
     )
 
@@ -54,8 +56,8 @@ export function Gallery() {
       <Float speed={1.2} rotationIntensity={0.15} floatIntensity={0.4}>
         <Text
           font="/fonts/Archivo-Bold.ttf"
-          fontSize={isMobile ? 0.58 : 1.35}
-          position={[0, isMobile ? 1.25 : 1.1, 2]}
+          fontSize={isMobile ? 0.26 : 1.35}
+          position={[0, isMobile ? 0.95 : 1.1, 2]}
           anchorX="center"
           anchorY="middle"
           color="#f5f5f5"
@@ -65,12 +67,12 @@ export function Gallery() {
         </Text>
         <Text
           font="/fonts/SpaceMono-Regular.ttf"
-          fontSize={isMobile ? 0.082 : 0.2}
-          position={[0, isMobile ? 0.55 : 0.1, 2]}
+          fontSize={isMobile ? 0.042 : 0.2}
+          position={[0, isMobile ? 0.62 : 0.1, 2]}
           anchorX="center"
           anchorY="middle"
           color="#d4a64f"
-          letterSpacing={isMobile ? 0.12 : 0.4}
+          letterSpacing={isMobile ? 0.04 : 0.4}
         >
           CINEMA · PHOTO · MANAGEMENT
         </Text>

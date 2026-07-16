@@ -6,7 +6,7 @@ import { Gallery } from './gallery'
 import { Overlay } from './overlay'
 import { useLiveProjects, getPages } from './data'
 
-export default function Experience() {
+export default function Experience({ onNavigate }: { onNavigate?: (path: string) => void }) {
   const projects = useLiveProjects()
   const pages = getPages(projects.length)
 
@@ -30,10 +30,10 @@ export default function Experience() {
       <fog attach="fog" args={['#080808', 12, 40]} />
       <ambientLight intensity={0.18} />
 
-      <ScrollControls pages={pages} damping={0.28}>
+      <ScrollControls pages={pages} damping={0.22}>
         <Gallery />
         <Scroll html style={{ width: '100%' }}>
-          <Overlay />
+          <Overlay onNavigate={onNavigate} />
         </Scroll>
       </ScrollControls>
 

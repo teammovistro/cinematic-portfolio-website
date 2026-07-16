@@ -1,6 +1,9 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/navigation'
+import { MobileStream } from './mobile-stream'
 
 const Experience = dynamic(() => import('./experience'), {
   ssr: false,
@@ -8,9 +11,10 @@ const Experience = dynamic(() => import('./experience'), {
 })
 
 export function WorldStage() {
+  const router = useRouter()
   return (
     <div className="fixed inset-0 h-screen w-screen">
-      <Experience />
+      <Experience onNavigate={(path: string) => router.push(path)} />
     </div>
   )
 }

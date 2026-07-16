@@ -19,12 +19,14 @@ export function Frame({ project, index }: { project: Project; index: number }) {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  // On mobile, center the photo (x = 0, rotY = 0) and scale proportionally so 100% of the image is fully visible
+  // On mobile, position the photo neatly above eye level (y = 0.44) and scale properly so it never overlaps with bottom captions
   const x = isMobile ? 0 : frameX(index)
+  const y = isMobile ? 0.44 : 0
   const z = frameZ(index)
   const rotY = isMobile ? 0 : frameRotY(index)
-  const scale = isMobile ? 0.44 : 1
+  const scale = isMobile ? 0.62 : 1
 
+  const groupRef = useRef<THREE.Group>(null)
   const imgRef = useRef<THREE.Mesh>(null)
   const lightRef = useRef<THREE.PointLight>(null)
   const [hovered, setHovered] = useState(false)
@@ -32,25 +34,35 @@ export function Frame({ project, index }: { project: Project; index: number }) {
   useFrame((state, delta) => {
     // gentle breathing glow on each artwork light
     if (lightRef.current) {
-      const pulse = 2.6 + Math.sin(state.clock.elapsedTime * 1.2 + index) * 0.35
+      const pulse = 2.4 + Math.sin(state.clock.elapsedTime * 1.2 + index) * 0.25
       lightRef.current.intensity = THREE.MathUtils.damp(
         lightRef.current.intensity,
-        hovered ? pulse + 2 : pulse,
-        4,
+        hovered ? pulse + 1.8 : pulse,
+        6,
         delta,
       )
+    }
+
+    // On mobile, only render the exact active frame being viewed to guarantee zero double picture overlapping (top/bottom)
+    if (groupRef.current) {
+      if (isMobile) {
+        const distZ = state.camera.position.z - z
+        groupRef.current.visible = distZ >= -1.6 && distZ <= 8.0
+      } else {
+        groupRef.current.visible = true
+      }
     }
   })
 
   return (
-    <group position={[x, 0, z]} rotation={[0, rotY, 0]} scale={scale}>
+    <group ref={groupRef} position={[x, y, z]} rotation={[0, rotY, 0]} scale={scale}>
       {/* warm key light pooling on the artwork + floor */}
       <pointLight
         ref={lightRef}
         position={[0, 1.2, 2.2]}
         color="#ffd9a0"
-        intensity={2.6}
-        distance={12}
+        intensity={2.4}
+        distance={7}
         decay={2}
       />
 
@@ -81,28 +93,32 @@ export function Frame({ project, index }: { project: Project; index: number }) {
         onPointerOut={() => setHovered(false)}
       />
 
-      {/* caption in 3D under the frame */}
-      <Text
-        font="/fonts/Archivo-Bold.ttf"
-        fontSize={0.26}
-        position={[-W / 2, -H / 2 - 0.4, 0]}
-        anchorX="left"
-        anchorY="top"
-        color="#f5f5f5"
-      >
-        {project.title.toUpperCase()}
-      </Text>
-      <Text
-        font="/fonts/SpaceMono-Regular.ttf"
-        fontSize={0.13}
-        position={[-W / 2, -H / 2 - 0.78, 0]}
-        anchorX="left"
-        anchorY="top"
-        color="#d4a64f"
-        letterSpacing={0.15}
-      >
-        {`${String(index + 1).padStart(2, '0')} — ${project.category.toUpperCase()}`}
-      </Text>
+      {/* caption in 3D under the frame (desktop only to prevent mobile overlap) */}
+      {!isMobile && (
+        <>
+          <Text
+            font="/fonts/Archivo-Bold.ttf"
+            fontSize={0.26}
+            position={[-W / 2, -H / 2 - 0.4, 0]}
+            anchorX="left"
+            anchorY="top"
+            color="#f5f5f5"
+          >
+            {project.title.toUpperCase()}
+          </Text>
+          <Text
+            font="/fonts/SpaceMono-Regular.ttf"
+            fontSize={0.13}
+            position={[-W / 2, -H / 2 - 0.78, 0]}
+            anchorX="left"
+            anchorY="top"
+            color="#d4a64f"
+            letterSpacing={0.15}
+          >
+            {`${String(index + 1).padStart(2, '0')} — ${project.category.toUpperCase()}`}
+          </Text>
+        </>
+      )}
     </group>
   )
 }

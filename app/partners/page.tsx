@@ -52,22 +52,28 @@ export default function PartnersPage() {
           <Clapperboard className="h-4 w-4 sm:h-5 sm:w-5 text-[color:var(--gold)]" />
           Movistro
         </Link>
-        <nav className="flex items-center gap-4 sm:gap-6 md:gap-8">
+        <nav className="flex items-center gap-2.5 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-none py-1">
+          <Link
+            href="/portfolio"
+            className="font-mono text-[0.6rem] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.25em] text-muted-foreground hover:text-[color:var(--gold)] transition-colors whitespace-nowrap"
+          >
+            Portfolio
+          </Link>
           <Link
             href="/about"
-            className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-muted-foreground hover:text-[color:var(--gold)] transition-colors"
+            className="font-mono text-[0.6rem] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.25em] text-muted-foreground hover:text-[color:var(--gold)] transition-colors whitespace-nowrap"
           >
             About
           </Link>
           <Link
             href="/partners"
-            className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[color:var(--gold)] transition-colors"
+            className="font-mono text-[0.6rem] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.25em] text-[color:var(--gold)] transition-colors whitespace-nowrap"
           >
             Partners
           </Link>
           <Link
             href="/booking"
-            className="font-mono text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-muted-foreground hover:text-[color:var(--gold)] transition-colors"
+            className="font-mono text-[0.6rem] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.25em] text-muted-foreground hover:text-[color:var(--gold)] transition-colors whitespace-nowrap"
           >
             Contact
           </Link>
